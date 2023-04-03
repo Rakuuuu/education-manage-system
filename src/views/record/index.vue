@@ -105,7 +105,7 @@ export default {
     },
     itemSelect (row, column, event) {
       this.selectItem = row
-      this.recordInfoShow = true;
+      this.recordInfoShow = true
     },
     statusTagFormatter (status) {
       return this.enumFormat(this.statusTag, status)
