@@ -1,33 +1,40 @@
 <template>
   <el-container>
-    <el-header height="61" class="student-header">
-      <div class="head-user">
-        <el-dropdown trigger="click" placement="bottom">
-          <el-badge :is-dot="messageCount!==0" >
-            <el-avatar  class="el-dropdown-avatar" size="medium"  :src="userInfo.imagePath === null ? require('@/assets/avatar.png') : userInfo.imagePath"></el-avatar>
-          </el-badge>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item @click.native="$router.push({path:'/user/index'})">个人中心</el-dropdown-item>
-            <el-dropdown-item @click.native="$router.push({path:'/user/message'})">
-              <el-badge :value="messageCount" v-if="messageCount!==0">
-                <span>消息中心</span>
-              </el-badge>
-              <span  v-if="messageCount===0">消息中心</span>
-            </el-dropdown-item>
-            <el-dropdown-item @click.native="logout" divided>退出</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
+    <header class="student-header">
+      <div class="header-main">
+        <div class="header-left">
+          <div class="logo">
+          <a><img src="@/assets/logo.png" height="32"/></a>
+        </div>
+          <el-menu class="el-menu-title" mode="horizontal" :default-active="defaultUrl" :router="true">
+            <el-menu-item index="/index">首页</el-menu-item>
+            <el-menu-item index="/paper/index">试题</el-menu-item>
+            <el-menu-item index="/record/index">考试记录</el-menu-item>
+            <el-menu-item index="/question/index">错题本</el-menu-item>
+          </el-menu>
+        </div>
+        <div class="head-user">
+          <el-dropdown trigger="click" placement="bottom">
+            <el-badge :is-dot="messageCount!==0" >
+              <img
+                class="el-dropdown-avatar"
+                :src="userInfo.imagePath === null ? require('@/assets/avatar.png') : userInfo.imagePath"
+              />
+            </el-badge>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item @click.native="$router.push({path:'/user/index'})">个人中心</el-dropdown-item>
+              <el-dropdown-item @click.native="$router.push({path:'/user/message'})">
+                <el-badge :value="messageCount" v-if="messageCount!==0">
+                  <span>消息中心</span>
+                </el-badge>
+                <span  v-if="messageCount===0">消息中心</span>
+              </el-dropdown-item>
+              <el-dropdown-item @click.native="logout" divided>退出</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
       </div>
-      <el-menu class="el-menu-title" mode="horizontal" :default-active="defaultUrl" :router="true">
-        <el-menu-item index="/index">首页</el-menu-item>
-        <el-menu-item index="/paper/index">试题</el-menu-item>
-        <el-menu-item index="/record/index">考试记录</el-menu-item>
-        <el-menu-item index="/question/index">错题本</el-menu-item>
-      </el-menu>
-      <div>
-        <a href="/"><img src="@/assets/logo.png" height="32"/></a>
-      </div>
-    </el-header>
+    </header>
     <el-main class="student-main">
       <router-view/>
     </el-main>
@@ -104,8 +111,51 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.student-header{
+  height:80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 1200px;
+}
+.header-main{
+  width: 1200px;
+  height: fit-content;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-left{
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logo{
+  flex-shrink: 0;
+  align-self: center;
+  justify-content: center;
+  padding: 0 20px 0 0 !important;
+}
+
+.logo a{
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
+
+.logo a img{
+  justify-content: center;
+  align-items: center;
+}
+
 .el-dropdown-avatar{
-  border: 1px silver solid;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px #e0e0e0 solid;
 }
   .el-menu-item{
     border-bottom: 0px solid #409EFF !important;
@@ -119,7 +169,7 @@ export default {
 
   .el-menu-item.is-active:after{
     position: absolute;
-    bottom: 0;
+    bottom: 15%;
     left: 50%;
     width: 20px;
     height:5px;
@@ -146,5 +196,10 @@ export default {
     100%{
       background: #5cb76a;
     }
+  }
+
+.student-header.head-user.el-dropdown-avatar{
+    margin: 0 !important;
+    flex-shrink: 0 !important;
   }
 </style>

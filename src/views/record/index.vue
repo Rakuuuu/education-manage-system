@@ -1,8 +1,8 @@
 <template>
-  <div style="margin-top: 10px" class="app-contain">
+  <div style="margin-top: 30px" class="app-contain">
      <el-row :gutter="50">
-       <el-col :span="18">
-         <el-table v-loading="listLoading" :data="tableData" fit highlight-current-row style="width: 100%" @row-click="itemSelect">
+       <el-col :span="24">
+         <el-table v-loading="listLoading" :data="tableData" fit highlight-current-row style="width: 100%" >
            <el-table-column prop="id" label="序号" width="90px"/>
            <el-table-column prop="paperName" label="名称"  />
            <el-table-column prop="subjectName" label="学科"  width="70" />
@@ -14,7 +14,7 @@
              </template>
            </el-table-column>
            <el-table-column prop="createTime" label="做题时间"  width="170" />
-           <el-table-column  align="right" width="70">
+           <el-table-column  align="right" width="70"  type="expand">
              <template slot-scope="{row}">
                <router-link target="_blank" :to="{path:'/edit',query:{id:row.id}}" v-if="row.status === 1 ">
                  <el-button  type="text" size="small">批改</el-button>
@@ -23,38 +23,37 @@
                  <el-button  type="text" size="small">查看试卷</el-button>
                </router-link>
              </template>
+             <template slot-scope="{row}">
+               <el-card  class="record-answer-info">
+                 <h3>做题详情</h3>
+                 <el-form label-width="50%">
+                   <el-form-item label="系统判分：">
+                     <span>{{row.systemScore}}</span>
+                   </el-form-item>
+                   <el-form-item label="最终得分：">
+                     <span>{{row.userScore}}</span>
+                   </el-form-item>
+                   <el-form-item label="试卷总分：">
+                     <span>{{row.paperScore}}</span>
+                   </el-form-item>
+                   <el-form-item label="正确题数：">
+                     <span>{{row.questionCorrect}}</span>
+                   </el-form-item>
+                   <el-form-item label="总题数：">
+                     <span>{{row.questionCount}}</span>
+                   </el-form-item>
+                   <el-form-item label="用时：">
+                     <span>{{row.doTime}}</span>
+                   </el-form-item>
+                 </el-form>
+               </el-card>
+             </template>
            </el-table-column>
          </el-table>
          <pagination v-show="total>0" :total="total" :background="false" :page.sync="queryParam.pageIndex" :limit.sync="queryParam.pageSize"
                      @pagination="search" style="margin-top: 20px"/>
        </el-col>
        <el-col  :span="6" >
-         <el-card  class="record-answer-info">
-           <h3 v-show="recordInfoShow">做题详情</h3>
-            <el-form label-width="50%" v-if="recordInfoShow">
-              <el-form-item label="系统判分：">
-                <span>{{selectItem.systemScore}}</span>
-              </el-form-item>
-              <el-form-item label="最终得分：">
-                <span>{{selectItem.userScore}}</span>
-              </el-form-item>
-              <el-form-item label="试卷总分：">
-                <span>{{selectItem.paperScore}}</span>
-              </el-form-item>
-              <el-form-item label="正确题数：">
-                <span>{{selectItem.questionCorrect}}</span>
-              </el-form-item>
-              <el-form-item label="总题数：">
-                <span>{{selectItem.questionCount}}</span>
-              </el-form-item>
-              <el-form-item label="用时：">
-                <span>{{selectItem.doTime}}</span>
-              </el-form-item>
-            </el-form>
-           <div class="no-point" v-else>
-<!--             <img src="../../assets/empty.png" alt=""/>-->
-           </div>
-         </el-card>
        </el-col>
      </el-row>
   </div>
@@ -150,4 +149,5 @@ export default {
     color: #5a5e66;
      text-align: center !important;
  }
+
 </style>

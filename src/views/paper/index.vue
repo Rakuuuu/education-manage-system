@@ -1,6 +1,6 @@
 <template>
-  <div style="margin-top: 10px" class="app-contain">
-    <el-tabs tab-position="left" v-model="tabId"  @tab-click="subjectChange" >
+  <div class="app-contain paper-card">
+    <el-tabs type="border-card" v-model="tabId"  @tab-click="subjectChange" >
       <el-tab-pane :label="item.name"  :key="item.id" :name="item.id" v-for="item in subjectList" style="margin-left: 20px;" >
         <el-row  style="float: right">
           <el-radio-group v-model="queryParam.paperType" size="mini" @change="paperTypeChange" >
@@ -89,7 +89,13 @@ export default {
 }
 </script>
 <style scoped>
-.el-tabs__header {
-  border-bottom: 0 solid !important;
-}
+  .paper-card {
+    margin-top: 30px !important;
+  }
+  ::v-deep.el-tabs{
+    border-radius: 10px !important;
+    border: 1px #e3e3e3 solid  !important;
+    box-shadow: 0 0 0 ;
+    overflow-x: hidden;
+  }
 </style>

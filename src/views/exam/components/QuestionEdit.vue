@@ -3,7 +3,7 @@
     <div v-if="qType==1" v-loading="qLoading">
       <div class="q-title" v-html="question.title"/>
       <div class="q-content">
-        <el-radio-group v-model="answer.content" @change="answer.completed = true" >
+        <el-radio-group v-model="answer.content" @change="answer.completed = true">
           <el-radio  v-for="item in question.items"  :key="item.prefix"  :label="item.prefix" >
             <span class="question-prefix">{{item.prefix}}.</span>
             <span v-html="item.content" class="q-item-span-content"></span>

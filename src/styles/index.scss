@@ -30,7 +30,6 @@ html {
     height: 61px;
     display: flex;
     align-items: center;
-    padding-left: 20px;
   }
 
   .el-menu-title {
@@ -46,56 +45,32 @@ html {
 
   .head-user {
     color: #909399;
-    float: right;
-    margin: 0px 0px 0px 10px;
 
     .el-dropdown-avatar {
-      margin-top: 12px;
-      margin-right: 20px;
       cursor: pointer;
-    }
-
-    .is-dot {
-      right: 10px;
-      top: 5px;
     }
   }
 }
 
 .student-main {
+  width: 1200px;
+  margin: 0 auto;
   padding: 0px !important;
+  overflow: visible !important;
 }
-
-
-@media only screen and (max-width: 768px) {
-  .student-footer {
-    padding: 40px 20px;
-  }
-}
-
-
-@media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .student-footer {
-    padding: 40px 70px;
-  }
-}
-
-
-@media only screen and (min-width: 1200px) {
-  .student-footer {
-    padding: 40px 150px;
-  }
-}
-
 
 .student-footer {
-  margin-top: 150px;
-  background-color: #f7fbfd;
+  //background-color: #5ba666;
   width: 100%;
+  display: flex;
+  justify-content: center;
   box-sizing: border-box;
 
   .foot-container {
     display: flex;
+    width: 1200px;
+    margin: 0 auto;
+    //background: #87e897;
     justify-content: space-between;
     padding: 50px;
     flex-wrap: wrap;
@@ -133,41 +108,6 @@ html {
     }
   }
 }
-
-
-
-@media only screen and (max-width: 768px) {
-  .app-item-contain {
-    padding: 30px 0px 0px 0px;
-  }
-
-  .app-contain {
-    padding: 30px 0px 0px 0px;
-  }
-}
-
-
-@media only screen and (min-width: 768px) and (max-width: 1200px) {
-  .app-item-contain {
-    padding: 30px 30px 0px 30px;
-  }
-
-  .app-contain {
-    padding: 30px 30px 0px 30px;
-  }
-}
-
-
-@media only screen and (min-width: 1200px) {
-  .app-item-contain {
-    padding: 30px 100px 0px 100px;
-  }
-
-  .app-contain {
-    padding: 30px 100px 0px 100px;
-  }
-}
-
 
 .q-title {
   margin: 5px 5px 0px 5px;
@@ -367,3 +307,64 @@ html {
     font-size: 14px;
   }
 }
+
+//examination---------------------------------------
+.container{
+  //background: #313131;
+}
+
+.do-exam-title{
+  padding:0 5%;
+  backdrop-filter:blur(10px);
+  background: rgba(92, 183, 106, 0.66) !important;
+  height: 60px;
+  display: flex;
+  position: fixed !important;
+  top: 0;
+  align-items: center;
+  .do-exam-title-tag{
+    background: rgb(255, 255,255);
+  }
+
+  .do-exam-time{
+    color: #505154;
+    font-weight: bolder;
+  }
+}
+
+
+.align-center {
+  text-align: center;
+  margin-top: 30px;
+}
+.exampaper-item-box{
+  //color:#fff;
+  //background: #dedede;
+}
+.exam-question-item {
+  padding: 10px;
+
+  .el-form-item__label {
+    font-size: 15px !important;
+  }
+}
+
+.app-item-contain{
+  color: #505154;
+}
+
+.question-title-padding {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.el-icon-s-order{
+  color: #409eff;
+  margin-right: 10px;
+}
+
+.second-title{
+  display: flex;
+  align-items: center;
+}
+//examination---------------------------------------end------------------------

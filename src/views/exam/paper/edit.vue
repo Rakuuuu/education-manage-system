@@ -46,7 +46,7 @@
         </el-row>
         <el-row class="do-align-center">
           <el-button type="primary" @click="submitForm">提交</el-button>
-          <el-button>取消</el-button>
+          <el-button @click="$router.push({path:'/edit'})">取消</el-button>
         </el-row>
       </el-form>
     </el-main>
@@ -136,58 +136,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container{
-  //background: #313131;
-}
-
-.do-exam-title{
-  padding:0 5%;
-  backdrop-filter:blur(10px);
-  background: rgba(65, 125, 255, 0.5) !important;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  .do-exam-title-tag{
-    background: rgb(255, 255,255);
-  }
-
-  .do-exam-time{
-    color: #505154;
-    font-weight: bolder;
-  }
-}
-
-.align-center {
-  text-align: center
-}
-.exampaper-item-box{
-  //color:#fff;
-  //background: #dedede;
-}
-.exam-question-item {
-  padding: 10px;
-
-  .el-form-item__label {
-    font-size: 15px !important;
-  }
-}
-
-.app-item-contain{
-  color: #505154;
-}
-
-.question-title-padding {
-  padding-left: 25px;
-  padding-right: 25px;
-}
-
-.el-icon-s-order{
-  color: #409eff;
-  margin-right: 10px;
-}
-
-.second-title{
-  display: flex;
-  align-items: center;
-}
 </style>

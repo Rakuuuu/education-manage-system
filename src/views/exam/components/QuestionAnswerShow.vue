@@ -26,7 +26,7 @@
       <div v-else-if="qType==3" >
         <div class="q-title" v-html="question.title" style="display: inline;margin-right: 10px"/>
         <span style="padding-right: 10px;">(</span>
-        <el-radio-group v-model="answer.content">
+        <el-radio-group v-model="answer.content"  disabled>
           <el-radio  v-for="item in question.items"  :key="item.prefix"  :label="item.prefix">
             <span v-html="item.content" class="q-item-span-content"></span>
           </el-radio>

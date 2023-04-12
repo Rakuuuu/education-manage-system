@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top: 10px">
+  <div>
     <el-row>
       <el-carousel :interval="5000" arrow="always">
         <el-carousel-item >
@@ -17,8 +17,8 @@
       </el-carousel>
     </el-row>
     <el-row class="app-item-contain">
-      <h3 class="index-title-h3" style="border-left: solid 10px #3651d4;">任务中心</h3>
-      <div style="padding-left: 15px">
+      <h3 class="index-title-h3">任务中心</h3>
+      <div>
         <el-collapse  v-loading="taskLoading"  accordion v-if="taskList.length!==0">
           <el-collapse-item :title="taskItem.title" :name="taskItem.id" :key="taskItem.id" v-for="taskItem in taskList">
             <table class="index-task-table">
@@ -46,15 +46,16 @@
             </table>
           </el-collapse-item>
         </el-collapse>
+        <div class="empty" v-else></div>
       </div>
     </el-row>
     <el-row class="app-item-contain">
       <h3 class="index-title-h3">固定试卷</h3>
-      <div style="padding-left: 15px">
+      <div>
         <el-col :span="4" v-for="(item, index) in fixedPaper" :key="index" :offset="index > 0 ? 1 : 0">
           <el-card :body-style="{ padding: '0px' }" v-loading="loading">
             <img src="@/assets/exam-paper/show1.png" class="image">
-            <div style="padding: 14px;">
+            <div>
               <span>{{item.name}}</span>
               <div class="bottom clearfix">
                 <router-link target="_blank" :to="{path:'/do',query:{id:item.id}}">
@@ -67,8 +68,8 @@
       </div>
     </el-row>
     <el-row class="app-item-contain">
-      <h3 class="index-title-h3" style="border-left: solid 10px rgb(220, 208, 65);">时段试卷</h3>
-      <div style="padding-left: 15px">
+      <h3 class="index-title-h3">时段试卷</h3>
+      <div>
         <el-col :span="4" v-for="(item, index) in timeLimitPaper" :key="index" :offset="index > 0 ? 1 : 0">
           <el-card :body-style="{ padding: '0px' }" v-loading="loading">
             <img src="@/assets/exam-paper/show2.png" class="image">
@@ -143,54 +144,45 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .index-title-h3 {
-    font-size: 22px;
-    font-weight: 400;
-    color: #1f2f3d;
-    border-left: solid 10px #2ce8b4;
-    padding-left: 10px;
+  .el-carousel{
+    margin: 30px 0 !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,.2);
+    border-radius: 10px;
+    height: 400px;
+  }
+  .carousel-img,.el-carousel__item,::v-deep.el-carousel>div{
+    height: 400px !important;
   }
 
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 18px;
-    opacity: 0.75;
-    line-height: 300px;
-    margin: 0;
+  .el-carousel_arrow{
+    border-radius: 0 !important;
   }
 
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
+  .app-item-contain{
+    margin-bottom: 30px;
+  }
+  .index-title-h3{
+    color: #5a5e66;
+    font-size: 24px;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    position: relative;
+    width: fit-content;
   }
 
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
+  .index-title-h3:before{
+    content: '';
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    bottom: 0;
+    position: absolute;
+    background: #5cb76a;
   }
 
-  .bottom {
-    margin-top: 13px;
-    line-height: 12px;
-  }
-
-  .button {
-    padding: 0;
-    float: right;
-  }
-
-  .image {
-    width: 50%;
-    height: 80%;
-    display: block;
-    margin: 20px auto 10px auto;
-  }
-
-  .clearfix:before,
-  .clearfix:after {
-    display: table;
-    content: "";
-  }
-
-  .clearfix:after {
-    clear: both
+  .el-card{
+    border-radius: 10px !important;
+    padding: 10px !important;
+    width: fit-content !important;
   }
 </style>

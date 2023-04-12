@@ -10,7 +10,7 @@
   <el-row  class="do-exam-title-hidden">
     <el-col :span="24">
         <span :key="item.itemOrder"  v-for="item in answer.answerItems">
-             <el-tag  class="do-exam-title-tag" >{{item.itemOrder}}</el-tag>
+             <el-tag class="do-exam-title-tag" >{{item.itemOrder}}</el-tag>
         </span>
     </el-col>
   </el-row>
@@ -92,58 +92,5 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>.container{
-  //background: #313131;
-}
-
-.do-exam-title{
-  padding:0 5%;
-  backdrop-filter:blur(10px);
-  background: rgba(65, 125, 255, 0.5) !important;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  .do-exam-title-tag{
-    background: rgb(255, 255,255);
-  }
-
-  .do-exam-time{
-    color: #505154;
-    font-weight: bolder;
-  }
-}
-
-.align-center {
-  text-align: center
-}
-.exampaper-item-box{
-  //color:#fff;
-  //background: #dedede;
-}
-.exam-question-item {
-  padding: 10px;
-
-  .el-form-item__label {
-    font-size: 15px !important;
-  }
-}
-
-.app-item-contain{
-  color: #505154;
-}
-
-.question-title-padding {
-  padding-left: 25px;
-  padding-right: 25px;
-}
-
-.el-icon-s-order{
-  color: #409eff;
-  margin-right: 10px;
-}
-
-.second-title{
-  display: flex;
-  align-items: center;
-}
+<style lang="scss" scoped>
 </style>

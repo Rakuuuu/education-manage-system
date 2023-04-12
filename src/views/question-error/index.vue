@@ -1,5 +1,5 @@
 <template>
-  <div style="margin-top: 10px" class="app-contain">
+  <div style="margin-top: 30px" class="app-contain">
     <el-row :gutter="50">
       <el-col :span="14">
         <el-table v-loading="listLoading" :data="tableData" fit highlight-current-row style="width: 100%" @row-click="itemSelect">
