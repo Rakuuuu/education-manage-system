@@ -118,6 +118,10 @@ export default {
   justify-content: center;
   width: 100%;
   min-width: 1200px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  background: #fff;
 }
 .header-main{
   width: 1200px;

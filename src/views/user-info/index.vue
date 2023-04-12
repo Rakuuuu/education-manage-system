@@ -1,28 +1,26 @@
 <template>
-  <div style="margin-top: 10px" class="app-contain">
+  <div style="margin-top: 30px;" class="app-contain">
+    <el-card class="user-info-card">
+      <div slot="header" class="clearfix">
+        <span>个人信息</span>
+      </div>
+      <el-row style="text-align: center">
+        <el-upload action="/api/student/upload/image"  accept=".jpg,.png" :show-file-list="false"  :on-success="uploadSuccess">
+          <el-avatar class="el-dropdown-avatar" :size="100" :src="form.imagePath === null ? require('@/assets/avatar.png') : form.imagePath"></el-avatar>
+        </el-upload>
+      </el-row>
+      <el-row class="user-info-userName">
+        <label>{{form.userName}}</label>
+      </el-row>
+      <el-divider/>
+      <el-row class="user-info-fullInfo">
+        <label>姓名：{{form.realName}}</label><br/>
+        <label>年级：{{levelFormatter(form.userLevel)}}</label><br/>
+        <label>注册时间：{{form.createTime}}</label><br/>
+      </el-row>
+    </el-card>
     <el-row :gutter="50">
-      <el-col :span="7">
-        <el-card>
-          <div slot="header" class="clearfix">
-            <span>个人信息</span>
-          </div>
-          <el-row style="text-align: center">
-            <el-upload action="/api/student/upload/image"  accept=".jpg,.png" :show-file-list="false"  :on-success="uploadSuccess">
-              <el-avatar class="el-dropdown-avatar" :size="100" :src="form.imagePath === null ? require('@/assets/avatar.png') : form.imagePath"></el-avatar>
-            </el-upload>
-          </el-row>
-          <el-row class="user-info-userName">
-            <label>{{form.userName}}</label>
-          </el-row>
-          <el-divider/>
-          <el-row class="user-info-fullInfo">
-            <label>姓名：{{form.realName}}</label><br/>
-            <label>年级：{{levelFormatter(form.userLevel)}}</label><br/>
-            <label>注册时间：{{form.createTime}}</label><br/>
-          </el-row>
-        </el-card>
-      </el-col>
-      <el-col :span="17">
+      <el-col :span="17" :offset="7">
         <el-card shadow="hover">
           <el-tabs active-name="event" type="card">
             <el-tab-pane label="用户动态" name="event">
@@ -158,5 +156,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .user-info-card{
+    position: fixed !important;
+    top: 0 !important;
+    margin-top: 110px;
+    box-sizing: border-box;
+  }
 </style>
