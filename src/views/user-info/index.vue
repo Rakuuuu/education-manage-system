@@ -156,7 +156,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .user-info-card{
+  .user-info-card {
     position: fixed !important;
     top: 0 !important;
     margin-top: 110px;
