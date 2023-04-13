@@ -87,7 +87,7 @@ export default {
 
   .lowin {
     /* variables */
-    --color-primary: #44a0b3;
+    --color-primary: #8cbe93;
     --color-grey: rgba(68, 160, 179, .06);
     --color-dark: rgba(68, 160, 179, .5);
     --color-semidark: rgba(68, 160, 179, .5);
@@ -111,7 +111,7 @@ export default {
   }
 
   .lowin.lowin-blue {
-    --color-primary: #0081C6;
+    --color-primary: #d3efd5;
     --color-grey: rgba(0, 129, 198, .05);
     --color-dark: rgba(0, 129, 198, .7);
     --color-semidark: rgba(0, 129, 198, .45);

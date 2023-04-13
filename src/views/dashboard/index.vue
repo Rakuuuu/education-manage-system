@@ -3,16 +3,13 @@
     <el-row>
       <el-carousel :interval="5000" arrow="always">
         <el-carousel-item >
-          <img src="@/assets/carousel/1.png" class="carousel-img">
+          <img src="@/assets/carousel/img1.jpg" class="carousel-img">
         </el-carousel-item>
         <el-carousel-item >
-          <img src="@/assets/carousel/2.png" class="carousel-img">
+          <img src="@/assets/carousel/img2.jpg" class="carousel-img">
         </el-carousel-item>
         <el-carousel-item >
-          <img src="@/assets/carousel/3.png" class="carousel-img">
-        </el-carousel-item>
-        <el-carousel-item >
-          <img src="@/assets/carousel/4.png" class="carousel-img">
+          <img src="@/assets/carousel/img3.jpeg" class="carousel-img">
         </el-carousel-item>
       </el-carousel>
     </el-row>
@@ -154,10 +151,29 @@ export default {
     height: 400px !important;
   }
 
-  .el-carousel_arrow{
+  ::v-deep.el-carousel .el-carousel__arrow{
     border-radius: 0 !important;
+    height: 100% !important;
+    padding: 0 20px !important;
+    width: fit-content;
+    background: rgba(255,255,255, 0);
+    font-weight: bolder;
   }
-
+  ::v-deep.el-carousel .el-carousel__arrow:hover{
+    background: rgba(90, 94, 102, 0.54);
+  }
+  ::v-deep.el-carousel .el-carousel__arrow--left{
+    left:0;
+  }
+  ::v-deep.el-carousel .el-carousel__arrow--right {
+    right: 0;
+  }
+  ::v-deep.el-carousel .el-carousel__indicators .el-carousel__indicator button{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin:0 5px;
+  }
   .app-item-contain{
     margin-bottom: 30px;
   }
@@ -173,16 +189,16 @@ export default {
   .index-title-h3:before{
     content: '';
     width: 100%;
-    height: 10px;
+    height: 5px;
     border-radius: 5px;
     bottom: 0;
     position: absolute;
-    background: #5cb76a;
+    background: #eccd50;
   }
 
   .el-card{
     border-radius: 10px !important;
-    padding: 10px !important;
+    padding: 30px 20px !important;
     width: fit-content !important;
   }
 </style>

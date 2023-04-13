@@ -145,10 +145,10 @@ export default {
 
   .lowin {
     /* variables */
-    --color-primary: #44a0b3;
+    --color-primary: #83bd8c;
     --color-grey: rgba(68, 160, 179, .06);
-    --color-dark: rgba(68, 160, 179, .5);
-    --color-semidark: rgba(68, 160, 179, .5);
+    --color-dark: rgb(99, 189, 113);
+    --color-semidark: rgb(93, 185, 107);
 
     text-align: center;
     margin: 60px 0 0 0;
@@ -169,10 +169,10 @@ export default {
   }
 
   .lowin.lowin-blue {
-    --color-primary: #0081C6;
-    --color-grey: rgba(0, 129, 198, .05);
-    --color-dark: rgba(0, 129, 198, .7);
-    --color-semidark: rgba(0, 129, 198, .45);
+    --color-primary: #5cb76a;
+    --color-grey: rgba(68, 160, 179, .06);
+    --color-dark: rgb(99, 189, 113);
+    --color-semidark: rgb(93, 185, 107);
   }
 
   .lowin a {

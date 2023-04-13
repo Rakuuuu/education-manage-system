@@ -11,6 +11,7 @@
             <el-menu-item index="/paper/index">试题</el-menu-item>
             <el-menu-item index="/record/index">考试记录</el-menu-item>
             <el-menu-item index="/question/index">错题本</el-menu-item>
+            <el-menu-item>考勤</el-menu-item>
           </el-menu>
         </div>
         <div class="head-user">

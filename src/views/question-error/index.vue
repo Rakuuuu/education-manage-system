@@ -1,9 +1,9 @@
 <template>
   <div style="margin-top: 30px" class="app-contain">
     <el-row :gutter="50">
-      <el-col :span="14">
+      <el-col>
         <el-table v-loading="listLoading" :data="tableData" fit highlight-current-row style="width: 100%" @row-click="itemSelect">
-          <el-table-column prop="shortTitle" label="题干"  show-overflow-tooltip />
+          <el-table-column prop="shortTitle" label="题干（点击查看错题详情）"  show-overflow-tooltip />
           <el-table-column prop="questionType" label="题型"  :formatter="questionTypeFormatter" width="70" />
           <el-table-column prop="subjectName" label="学科"  width="50" />
           <el-table-column prop="createTime" label="做题时间"  width="170" />
@@ -11,7 +11,10 @@
         <pagination v-show="total>0" :total="total" :background="false" :page.sync="queryParam.pageIndex" :limit.sync="queryParam.pageSize"
                     @pagination="search" style="margin-top: 20px"/>
       </el-col>
-      <el-col  :span="10" >
+      <el-dialog
+        title="错题详情"
+        :visible.sync="dialogVisible"
+      >
         <el-card  class="record-answer-info">
           <el-form>
             <el-form-item>
@@ -19,7 +22,7 @@
             </el-form-item>
           </el-form>
         </el-card>
-      </el-col>
+      </el-dialog>
     </el-row>
   </div>
 </template>
@@ -46,7 +49,8 @@ export default {
         questionType: 0,
         questionItem: null,
         answerItem: null
-      }
+      },
+      dialogVisible: false
     }
   },
   created () {
@@ -79,6 +83,7 @@ export default {
         _this.selectItem.questionItem = response.questionVM
         _this.selectItem.answerItem = response.questionAnswerVM
         _this.qAnswerLoading = false
+        _this.dialogVisible = true
       })
     },
     questionTypeFormatter (row, column, cellValue, index) {
@@ -95,5 +100,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .el-card{
+    margin-top: 0 !important;
+    box-shadow: 0 0 0 0;
+    border: 0;
+  }
+  ::v-deep.el-card>div{
+    padding: 0 !important;
+  }
 </style>
