@@ -12,7 +12,7 @@
 
 <script>
 import userApi from '@/api/user'
-import axios from 'axios'
+// import axios from 'axios'
 export default {
   name: 'signIn',
   data () {
@@ -22,26 +22,26 @@ export default {
   },
   methods: {
     submitSignIn () {
-      // userApi.doRecord({
-      //   token: this.signInCode,
-      //   studentId: 1
-      // }).then(res => {
-      //   console.log(res)
-      // }, err => {
-      //   console.log(err)
-      // })
-      axios({
-        method: 'post',
-        url: '/api/student/record/dorecord',
-        data: {
-          token: this.signInCode,
-          studentId: 1
-        }
+      userApi.doRecord({
+        token: this.signInCode,
+        id: 1
       }).then(res => {
         console.log(res)
       }, err => {
         console.log(err)
       })
+      // axios({
+      //   method: 'post',
+      //   url: '/api/student/record/dorecord',
+      //   data: {
+      //     token: this.signInCode,
+      //     studentId: 1
+      //   }
+      // }).then(res => {
+      //   console.log(res)
+      // }, err => {
+      //   console.log(err)
+      // })
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <div class="app-contain paper-card">
-    <el-tabs type="border-card" v-model="tabId"  @tab-click="subjectChange" >
+    <el-tabs type="border-card" v-model="tabId"  @tab-click="subjectChange" v-if="subjectList.length">
       <el-tab-pane :label="item.name"  :key="item.id" :name="item.id" v-for="item in subjectList" style="margin-left: 20px;" >
         <el-row  style="float: right">
           <el-radio-group v-model="queryParam.paperType" size="mini" @change="paperTypeChange" >
@@ -22,7 +22,7 @@
                     @pagination="search" style="margin-top: 20px"/>
       </el-tab-pane>
     </el-tabs>
-
+    <div v-else class="empty-container"></div>
   </div>
 </template>
 
@@ -57,6 +57,9 @@ export default {
       let _this = this
       subjectApi.list().then(re => {
         _this.subjectList = re.response
+
+        if (!_this.subjectList.length) { return }
+
         let subjectId = _this.subjectList[0].id
         _this.queryParam.subjectId = subjectId
         _this.tabId = subjectId.toString()
@@ -97,5 +100,26 @@ export default {
     border: 1px #e3e3e3 solid  !important;
     box-shadow: 0 0 0 ;
     overflow-x: hidden;
+  }
+
+  .empty-container{
+    width: 1200px;
+    margin: 0 auto;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url(~@/assets/empty.png) center no-repeat;
+    background-size: 20%;
+    position: relative;
+  }
+  .empty-container:after{
+    content: '暂无试题';
+    color: #b6b6b6;
+    font-size: 20px;
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translate(-50%, 0);
   }
 </style>
