@@ -19,14 +19,24 @@ export default {
   name: 'signIn',
   data () {
     return {
-      signInCode: ''
+      signInCode: '',
+      userData: {}
     }
+  },
+  mounted () {
+    userApi.getCurrentUser().then(res => {
+      console.log(res)
+      if(res.response)
+        this.userData = res.response
+      else
+        this.$message.warning('发生错误')
+    })
   },
   methods: {
     submitSignIn () {
       userApi.doRecord({
         token: parseInt(this.signInCode),
-        studentId: 1
+        studentId: this.userData.id
       }).then(res => {
         if (res.code === 1) { this.$message.success(res.message) } else { this.$message.warning(res.message) }
       }, err => {
