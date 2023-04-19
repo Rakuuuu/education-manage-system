@@ -87,7 +87,7 @@ export default {
 
   >>>.el-card h3{
     text-align: center;
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.75rem;
     margin:30px -0.5rem 0 0 ;
     font-size: 48px;
     color: #444444;
