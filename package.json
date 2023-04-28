@@ -43,9 +43,12 @@
     "normalize.css": "8.0.1",
     "nprogress": "0.2.0",
     "screenfull": "^5.2.0",
+    "socket.io-client": "^4.6.1",
     "vue": "^2.7.14",
+    "vue-happy-scroll": "^2.1.1",
     "vue-router": "^3.6.5",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2",
+    "xgplayer-hls.js": "^2.6.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.19",

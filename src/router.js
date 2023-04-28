@@ -23,6 +23,12 @@ const router = new Router({
           name: 'SignIn',
           component: () => import('@/views/sign-in/signIn'),
           meta: { title: '我的考勤' }
+        },
+        {
+          path: '/live',
+          name: 'Live',
+          component: () => import('@/views/live/index'),
+          meta: { title: '在线课堂' }
         }
       ]
     },

@@ -157,6 +157,7 @@ export default {
 
 <style lang="scss" scoped>
   .user-info-card {
+    z-index: 99;
     position: fixed !important;
     top: 0 !important;
     margin-top: 110px;

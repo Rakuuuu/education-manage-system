@@ -12,6 +12,7 @@
             <el-menu-item index="/record/index">考试记录</el-menu-item>
             <el-menu-item index="/question/index">错题本</el-menu-item>
             <el-menu-item index="/sign">考勤</el-menu-item>
+            <el-menu-item index="/live">在线课堂</el-menu-item>
           </el-menu>
         </div>
         <div class="head-user">
@@ -75,7 +76,7 @@ export default {
     this.defaultUrl = this.routeSelect(this.$route.path)
     this.getUserMessageInfo()
     userApi.getCurrentUser().then(re => {
-      _this.userInfo = re.response
+      _this.userInfo.imagePath = re.response.imagePath
     })
   },
   watch: {
