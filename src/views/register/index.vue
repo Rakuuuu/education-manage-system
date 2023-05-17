@@ -3,26 +3,35 @@
     <div class="lowin-wrapper">
       <div class="lowin-box lowin-register">
         <div class="lowin-box-inner">
-          <el-form ref="loginForm" >
+          <el-form ref="registerForm" :model="registerForm" :rules="rules">
             <p>教学管理系统</p>
             <div class="lowin-group">
               <label>用户名 </label>
               <el-input ref="userName"  class="lowin-input" placeholder="用户名"
+                        v-model="registerForm.userName"
                         name="userName" type="text" tabindex="1" auto-complete="on"/>
             </div>
             <div class="lowin-group password-group">
               <label>密码</label>
-              <el-input class="lowin-input" ref="password"
-                        placeholder="密码" name="password" tabindex="2" auto-complete="on"
-                        />
+              <el-input
+                class="lowin-input"
+                type="password"
+                ref="password"
+                placeholder="密码"
+                name="password"
+                tabindex="2"
+                auto-complete="on"
+                v-model="registerForm.password"
+              />
             </div>
             <div class="lowin-group">
               <label>年级 </label>
-              <el-select class="lowin-input"  placeholder="年级">
-                <el-option ></el-option>
+              <el-select class="lowin-input"  placeholder="年级" v-model="registerForm.userLevel">
+                <el-option v-for="item in levelEnum" :key="item.key" :value="item.key"
+                           :label="item.value"></el-option>
               </el-select>
             </div>
-            <el-button type="text" class="lowin-btn login-btn">注册</el-button>
+            <el-button type="text" class="lowin-btn login-btn" @click="handleRegister">注册</el-button>
             <div class="text-foot">
               已有账号?
               <router-link to="/login" class="login-link">
@@ -45,22 +54,54 @@ import registerApi from '@/api/register'
 export default {
   name: 'Login',
   data () {
+    const validateUsername = (rule, value, callback) => {
+      if (value.length < 5) {
+        callback(new Error('用户名不能少于5个字符'))
+      } else {
+        callback()
+      }
+    }
+    const validatePassword = (rule, value, callback) => {
+      if (value.length < 5) {
+        callback(new Error('密码不能少于5个字符'))
+      } else {
+        callback()
+      }
+    }
     return {
-      loginForm: {
+      registerForm: {
         userName: '',
         password: '',
         userLevel: 1
+      },
+      rules: {
+        userName: [{ required: true, trigger: 'blur', validator: validateUsername }],
+        password: [{ required: true, trigger: 'blur', validator: validatePassword }]
       }
     }
   },
   methods: {
     handleRegister () {
       let _this = this
-      registerApi.register(this.loginForm).then(function (result) {
-        if (result && result.code === 1) {
-          _this.$router.push({ path: '/login' })
+      this.$refs.registerForm.validate(valid => {
+        if (valid) {
+          this.loading = true
+          registerApi.register(this.registerForm).then(function (result) {
+            console.log(result)
+            if (result && result.code === 1) {
+              _this.$message.success('注册成功')
+              setTimeout(() => {
+                _this.$router.push({ path: '/login' })
+              }, 2000)
+            } else {
+              _this.loading = false
+              _this.$message.error(result.message)
+            }
+          }).catch(function (reason) {
+            _this.loading = false
+          })
         } else {
-          _this.$message.error(result.message)
+          return false
         }
       })
     },
@@ -87,10 +128,10 @@ export default {
 
   .lowin {
     /* variables */
-    --color-primary: #8cbe93;
-    --color-grey: rgba(68, 160, 179, .06);
-    --color-dark: rgba(68, 160, 179, .5);
-    --color-semidark: rgba(68, 160, 179, .5);
+    --color-primary: #5db96b;
+    --color-grey: rgba(0, 198, 99, 0.7);
+    --color-dark: rgba(232, 255, 194, 0.7);
+    --color-semidark: rgb(182, 182, 182);
 
     text-align: center;
     margin: 20px 0 0 0;
@@ -113,8 +154,8 @@ export default {
   .lowin.lowin-blue {
     --color-primary: #d3efd5;
     --color-grey: rgba(0, 129, 198, .05);
-    --color-dark: rgba(0, 129, 198, .7);
-    --color-semidark: rgba(0, 129, 198, .45);
+    --color-dark: rgba(26, 198, 0, 0.7);
+    --color-semidark: rgba(65, 159, 121, 0.7);
   }
 
   .lowin a {
@@ -228,7 +269,7 @@ export default {
     color: #fff;
     padding: 15px;
     border-radius: 3px;
-    background-color: var(--color-primary);
+    background-color: #5db96b;
     -webkit-box-shadow: 0 2px 7px var(--color-semidark);
     box-shadow: 0 2px 7px var(--color-semidark);
     font-weight: 700;

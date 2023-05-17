@@ -222,22 +222,22 @@ export default {
     border-radius: 3px;
   }
 
-  /*.lowin .lowin-box::after {*/
-  /*  content: ' ';*/
-  /*  -webkit-box-shadow: 0 0 25px rgba(0, 0, 0, .1);*/
-  /*  box-shadow: 0 0 25px rgba(0, 0, 0, .1);*/
-  /*  -webkit-transform: translate(0, -92.6%) scale(.88);*/
-  /*  -ms-transform: translate(0, -92.6%) scale(.88);*/
-  /*  transform: translate(0, -92.6%) scale(.88);*/
-  /*  border-radius: 3px;*/
-  /*  position: absolute;*/
-  /*  top: 100%;*/
-  /*  left: 0;*/
-  /*  width: 100%;*/
-  /*  height: 100%;*/
-  /*  background-color: #fff;*/
-  /*  z-index: -1;*/
-  /*}*/
+  .lowin .lowin-box::after {
+    content: ' ';
+    -webkit-box-shadow: 0 0 25px rgba(0, 0, 0, .1);
+    box-shadow: 0 0 25px rgba(0, 0, 0, .1);
+    -webkit-transform: translate(0, -92.6%) scale(.88);
+    -ms-transform: translate(0, -92.6%) scale(.88);
+    transform: translate(0, -92.6%) scale(.88);
+    border-radius: 3px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: -1;
+  }
 
   .lowin .lowin-box.lowin-flip {
     -webkit-transform: rotate3d(0, 1, 0, -180deg);
@@ -287,7 +287,7 @@ export default {
     color: #fff;
     padding: 15px;
     border-radius: 3px;
-    background-color: var(--color-primary);
+    background-color: var(--color-semidark);
     -webkit-box-shadow: 0 2px 7px var(--color-semidark);
     box-shadow: 0 2px 7px var(--color-semidark);
     font-weight: 700;

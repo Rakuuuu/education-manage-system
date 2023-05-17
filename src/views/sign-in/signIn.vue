@@ -26,10 +26,11 @@ export default {
   mounted () {
     userApi.getCurrentUser().then(res => {
       console.log(res)
-      if(res.response)
+      if (res.response) {
         this.userData = res.response
-      else
+      } else {
         this.$message.warning('发生错误')
+      }
     })
   },
   methods: {
